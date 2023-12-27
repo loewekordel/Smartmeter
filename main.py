@@ -62,8 +62,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     logging.debug(args)
 
     # load configuration
+    settings_file = Path(__file__).parent / "settings.toml"
     try:
-        config: Configuration = load_settings("settings.toml")
+        config: Configuration = load_settings(settings_file)
     except (ConfigurationError, OSError) as e:
         logging.error(e)
         return 1
